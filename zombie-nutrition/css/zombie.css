@@ -1,0 +1,264 @@
+/* Zombie Character Styles */
+.zombie {
+    position: relative;
+    width: 200px;
+    height: 300px;
+    margin-bottom: 20px;
+    transition: all 0.5s ease;
+}
+
+/* Base Colors */
+:root {
+    --z-skin-base: #9EA7A7; /* Sickly grey-green */
+    --z-skin-healthy: #FFCCBC; /* Healthy pink */
+    --z-eye-base: #FFFFE0;
+    --z-eye-glow: #FFD700;
+    --z-hair-base: #555;
+    --z-shirt: #81D4FA;
+    --z-pants: #5D4037;
+}
+
+/* Head */
+.z-head {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 130px;
+    background-color: var(--z-skin-base);
+    border-radius: 40% 40% 50% 50%;
+    z-index: 5;
+    transition: background-color 1s ease;
+}
+
+/* Face */
+.z-face {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Eyes */
+.z-eyes {
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.z-eye {
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 50%;
+    position: relative;
+    border: 3px solid #333;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+.z-eye::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background-color: #000;
+    border-radius: 50%;
+}
+
+/* Tired Eyes (Default) */
+.zombie:not(.healthy-eyes) .z-eye {
+    height: 25px; /* Squinted/tired */
+    box-shadow: 0 4px 0 #666 inset; /* Bags under eyes effect */
+}
+
+/* Healthy Eyes (Effect) */
+.zombie.healthy-eyes .z-eye {
+    box-shadow: 0 0 15px var(--z-eye-glow);
+    border-color: var(--z-eye-glow);
+    width: 35px;
+    height: 35px;
+}
+
+/* Mouth */
+.z-mouth {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 10px;
+    background-color: #333;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.zombie.eating .z-mouth {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    animation: chew 0.3s infinite alternate;
+}
+
+/* Hair */
+.z-hair {
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130px;
+    height: 40px;
+    background-color: transparent; /* Initially sparse */
+    z-index: 6;
+}
+
+.z-hair::before, .z-hair::after {
+    content: '';
+    position: absolute;
+    background-color: var(--z-hair-base);
+    width: 5px;
+    height: 20px;
+    border-radius: 5px;
+    top: 10px;
+}
+.z-hair::before { left: 40px; transform: rotate(-20deg); }
+.z-hair::after { right: 40px; transform: rotate(20deg); }
+
+/* Full Hair (Effect) */
+.zombie.full-hair .z-hair {
+    background-color: var(--z-hair-base);
+    border-radius: 50% 50% 0 0;
+    height: 50px;
+    top: 10px;
+}
+
+/* Body */
+.z-body {
+    position: absolute;
+    top: 140px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 120px;
+    z-index: 4;
+}
+
+.z-torso {
+    width: 80px;
+    height: 100px;
+    background-color: var(--z-shirt);
+    margin: 0 auto;
+    border-radius: 15px 15px 0 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Stomach (for shrinking effect) */
+.z-stomach {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 40px;
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 50%;
+    transition: width 1s ease;
+}
+
+.zombie.slim-tummy .z-stomach {
+    width: 0;
+    opacity: 0;
+}
+
+/* Arms */
+.z-arms {
+    position: absolute;
+    top: 10px;
+    width: 100%;
+}
+
+.z-arm {
+    position: absolute;
+    width: 20px;
+    height: 90px;
+    background-color: var(--z-skin-base);
+    top: 5px;
+    border-radius: 10px;
+    transition: all 0.5s ease;
+}
+
+.z-arm.left { left: -15px; transform: rotate(10deg); }
+.z-arm.right { right: -15px; transform: rotate(-10deg); }
+
+/* Muscles (Effect) */
+.zombie.muscular .z-arm {
+    width: 35px; /* Thicker arms */
+    background-color: var(--z-skin-healthy); /* Healthy skin tone usually accompanies muscles */
+}
+
+/* Legs */
+.z-legs {
+    position: absolute;
+    bottom: -40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.z-leg {
+    width: 25px;
+    height: 60px;
+    background-color: var(--z-pants);
+    border-radius: 0 0 10px 10px;
+}
+
+/* Skin Color Change (Effect) */
+.zombie.healthy-skin .z-head,
+.zombie.healthy-skin .z-arm,
+.zombie.healthy-skin .z-leg { /* Legs are pants, but let's assume skin shows */
+    background-color: var(--z-skin-healthy);
+}
+
+.zombie.healthy-skin .z-face {
+    box-shadow: inset 0 0 20px rgba(255, 100, 100, 0.2); /* Rosy cheeks */
+}
+
+/* Skeleton Overlay (Initially Hidden) */
+.z-skeleton-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='200' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M100 50 L100 250' stroke='white' stroke-width='10' opacity='0.8'/%3E%3C/svg%3E"); /* Simple spine representation */
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: opacity 0.5s;
+    filter: drop-shadow(0 0 5px white);
+}
+
+.zombie.strong-bones .z-skeleton-overlay {
+    opacity: 0.6;
+    animation: boneGlow 2s infinite alternate;
+}
+
+/* Animations */
+@keyframes chew {
+    0% { transform: translateX(-50%) scaleY(1); }
+    100% { transform: translateX(-50%) scaleY(0.5); }
+}
+
+@keyframes boneGlow {
+    from { filter: drop-shadow(0 0 2px white); }
+    to { filter: drop-shadow(0 0 10px cyan); }
+}

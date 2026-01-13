@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>僵尸的健康餐 - 蔬菜营养科普</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/zombie.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <header>
+        <h1>僵尸的健康餐 🧟‍♂️🥬</h1>
+    </header>
+
+    <main class="container">
+        <!-- 左侧蔬菜选择区 -->
+        <section class="vegetable-section">
+            <div class="vegetable-grid" id="vegetableGrid">
+                <!-- 蔬菜卡片将通过JS动态生成 -->
+            </div>
+        </section>
+
+        <!-- 右侧僵尸展示区 -->
+        <section class="zombie-section">
+            <div class="zombie-container">
+                <!-- 僵尸角色 -->
+                <div class="zombie" id="zombie">
+                    <div class="z-hair"></div>
+                    <div class="z-head">
+                        <div class="z-face">
+                            <div class="z-eyes">
+                                <div class="z-eye left"></div>
+                                <div class="z-eye right"></div>
+                            </div>
+                            <div class="z-mouth"></div>
+                            <div class="z-cheeks"></div>
+                        </div>
+                    </div>
+                    <div class="z-body">
+                        <div class="z-torso">
+                            <div class="z-stomach"></div>
+                        </div>
+                        <div class="z-arms">
+                            <div class="z-arm left"></div>
+                            <div class="z-arm right"></div>
+                        </div>
+                        <div class="z-legs">
+                            <div class="z-leg left"></div>
+                            <div class="z-leg right"></div>
+                        </div>
+                    </div>
+                    <!-- 骨骼层 (默认隐藏/叠加) -->
+                    <div class="z-skeleton-overlay"></div>
+                </div>
+                
+                <!-- Buff文字容器 -->
+                <div id="buffContainer" class="buff-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 底部知识卡片区 -->
+    <div id="infoPanel" class="info-panel hidden">
+        <button class="close-btn" id="closePanel">×</button>
+        <div class="info-content">
+            <div class="info-img" id="infoImg"></div>
+            <div class="info-details">
+                <h2 id="infoName">蔬菜名称</h2>
+                <div class="tags" id="infoTags"></div>
+                <div class="nutrition-box">
+                    <h3>营养成分</h3>
+                    <ul id="infoNutrition"></ul>
+                </div>
+                <div class="effects-box">
+                    <h3>健康功效</h3>
+                    <ul id="infoEffects"></ul>
+                </div>
+                <p id="infoDesc" class="info-desc"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入脚本 -->
+    <script src="js/vegetables.js"></script>
+    <script src="js/zombie.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

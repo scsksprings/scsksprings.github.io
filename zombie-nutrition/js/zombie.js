@@ -58,4 +58,19 @@ class Zombie {
             buffEl.remove();
         }, 2000);
     }
+
+    reset() {
+        // Remove all effect classes
+        this.element.classList.remove(
+            'healthy-skin', 
+            'healthy-eyes', 
+            'muscular', 
+            'strong-bones', 
+            'full-hair'
+        );
+        
+        // Add shake animation for feedback
+        this.element.classList.add('shake');
+        setTimeout(() => this.element.classList.remove('shake'), 500);
+    }
 }

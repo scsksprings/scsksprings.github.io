@@ -1,7 +1,6 @@
 /* Flying Vegetable Animation */
 .flying-veg {
     position: fixed;
-    font-size: 3rem;
     z-index: 1000;
     pointer-events: none;
     transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);

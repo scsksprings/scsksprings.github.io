@@ -1,35 +1,40 @@
 /* Zombie Character Styles */
 .zombie {
     position: relative;
-    width: 200px;
-    height: 300px;
+    width: 220px;
+    height: 320px;
     margin-bottom: 20px;
     transition: all 0.5s ease;
 }
 
 /* Base Colors */
 :root {
-    --z-skin-base: #9EA7A7; /* Sickly grey-green */
+    --z-skin-base: #698B69; /* Sage Green from reference */
     --z-skin-healthy: #FFCCBC; /* Healthy pink */
-    --z-eye-base: #FFFFE0;
+    --z-eye-base: #FFFFFF;
     --z-eye-glow: #FFD700;
-    --z-hair-base: #555;
-    --z-shirt: #81D4FA;
-    --z-pants: #5D4037;
+    --z-hair-base: #333;
+    
+    /* Clothing */
+    --z-jacket: #5D4037; /* Brown */
+    --z-tie: #D32F2F; /* Red */
+    --z-shirt: #EFEBE9; /* Off-white */
+    --z-pants: #1A237E; /* Dark Blue */
 }
 
 /* Head */
 .z-head {
     position: absolute;
-    top: 20px;
+    top: 10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 120px;
-    height: 130px;
+    width: 140px;
+    height: 150px;
     background-color: var(--z-skin-base);
-    border-radius: 40% 40% 50% 50%;
+    border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; /* More organic/irregular shape */
     z-index: 5;
     transition: background-color 1s ease;
+    box-shadow: inset -5px -5px 15px rgba(0,0,0,0.2);
 }
 
 /* Face */
@@ -42,22 +47,34 @@
 /* Eyes */
 .z-eyes {
     position: absolute;
-    top: 40px;
+    top: 45px;
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 8px;
+    z-index: 6;
 }
 
 .z-eye {
-    width: 30px;
-    height: 30px;
     background-color: white;
     border-radius: 50%;
     position: relative;
     border: 3px solid #333;
     overflow: hidden;
     transition: all 0.5s ease;
+    background: radial-gradient(circle at 30% 30%, white 50%, #eee 100%);
+}
+
+.z-eye.left {
+    width: 45px;
+    height: 45px;
+    transform: translateY(2px); /* Slightly misaligned */
+}
+
+.z-eye.right {
+    width: 55px; /* Bulging eye */
+    height: 55px;
+    transform: translateY(-5px);
 }
 
 .z-eye::after {
@@ -66,24 +83,21 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 8px;
-    height: 8px;
+    width: 5px; /* Tiny pupil */
+    height: 5px;
     background-color: #000;
     border-radius: 50%;
 }
 
 /* Tired Eyes (Default) */
 .zombie:not(.healthy-eyes) .z-eye {
-    height: 25px; /* Squinted/tired */
-    box-shadow: 0 4px 0 #666 inset; /* Bags under eyes effect */
+    box-shadow: 0 0 0 4px rgba(0,0,0,0.2); /* Dark circles */
 }
 
 /* Healthy Eyes (Effect) */
 .zombie.healthy-eyes .z-eye {
     box-shadow: 0 0 15px var(--z-eye-glow);
     border-color: var(--z-eye-glow);
-    width: 35px;
-    height: 35px;
 }
 
 /* Mouth */
@@ -92,16 +106,29 @@
     bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
-    width: 40px;
-    height: 10px;
-    background-color: #333;
-    border-radius: 10px;
+    width: 50px;
+    height: 25px;
+    background-color: #3E2723;
+    border-radius: 30% 30% 50% 50%;
     transition: all 0.3s;
+    overflow: hidden;
+    border: 2px solid #2E2E2E;
 }
 
+.z-tooth {
+    position: absolute;
+    background: #FFF9C4; /* Yellowish teeth */
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+}
+.z-mouth .z-tooth:nth-child(1) { top: 0; left: 10px; height: 12px;}
+.z-mouth .z-tooth:nth-child(2) { top: 0; right: 10px; height: 10px;}
+.z-mouth .z-tooth:nth-child(3) { bottom: 0; left: 18px; height: 12px;}
+
 .zombie.eating .z-mouth {
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 45px;
     border-radius: 50%;
     animation: chew 0.3s infinite alternate;
 }
@@ -109,98 +136,133 @@
 /* Hair */
 .z-hair {
     position: absolute;
-    top: -5px;
+    top: -10px;
     left: 50%;
     transform: translateX(-50%);
     width: 130px;
     height: 40px;
-    background-color: transparent; /* Initially sparse */
-    z-index: 6;
+    background-color: transparent;
+    z-index: 4;
 }
 
 .z-hair::before, .z-hair::after {
     content: '';
     position: absolute;
-    background-color: var(--z-hair-base);
-    width: 5px;
-    height: 20px;
-    border-radius: 5px;
-    top: 10px;
+    background-color: transparent;
+    border-left: 2px solid var(--z-hair-base);
+    border-top: 2px solid var(--z-hair-base);
+    width: 15px;
+    height: 25px;
+    top: 5px;
+    border-radius: 50% 0 0 0;
 }
-.z-hair::before { left: 40px; transform: rotate(-20deg); }
-.z-hair::after { right: 40px; transform: rotate(20deg); }
+.z-hair::before { left: 55px; transform: rotate(-10deg); }
+.z-hair::after { right: 55px; transform: rotate(10deg) scaleX(-1); }
 
 /* Full Hair (Effect) */
 .zombie.full-hair .z-hair {
     background-color: var(--z-hair-base);
-    border-radius: 50% 50% 0 0;
+    border-radius: 50% 50% 10% 10%;
     height: 50px;
-    top: 10px;
+    top: 5px;
+    width: 140px;
+}
+.zombie.full-hair .z-hair::before,
+.zombie.full-hair .z-hair::after {
+    display: none;
 }
 
 /* Body */
 .z-body {
     position: absolute;
-    top: 140px;
+    top: 150px;
     left: 50%;
     transform: translateX(-50%);
-    width: 100px;
-    height: 120px;
+    width: 110px;
+    height: 140px;
     z-index: 4;
 }
 
 .z-torso {
-    width: 80px;
-    height: 100px;
-    background-color: var(--z-shirt);
+    width: 90px;
+    height: 110px;
+    background-color: var(--z-jacket); /* Jacket */
     margin: 0 auto;
-    border-radius: 15px 15px 0 0;
+    border-radius: 20px 20px 0 0;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
-/* Stomach (for shrinking effect) */
-.z-stomach {
+/* Shirt Collar/Tie Area */
+.z-torso::before {
+    content: '';
     position: absolute;
-    bottom: 10px;
+    top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 60px;
-    height: 40px;
-    background-color: rgba(0,0,0,0.1);
-    border-radius: 50%;
-    transition: width 1s ease;
+    width: 40px;
+    height: 100%;
+    background-color: var(--z-shirt);
+    clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
 }
 
-.zombie.slim-tummy .z-stomach {
-    width: 0;
-    opacity: 0;
+.z-tie {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15px;
+    height: 60px;
+    background-color: var(--z-tie);
+    z-index: 5;
+    clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+}
+
+/* Stomach (for shrinking effect) - hidden under shirt but affects silhouette if we want */
+.z-stomach {
+    display: none; /* Simplified for suit look */
 }
 
 /* Arms */
 .z-arms {
     position: absolute;
-    top: 10px;
+    top: 15px;
     width: 100%;
+    z-index: 3;
 }
 
 .z-arm {
     position: absolute;
-    width: 20px;
-    height: 90px;
-    background-color: var(--z-skin-base);
+    width: 25px;
+    height: 100px;
+    background-color: var(--z-jacket);
     top: 5px;
     border-radius: 10px;
     transition: all 0.5s ease;
 }
 
-.z-arm.left { left: -15px; transform: rotate(10deg); }
-.z-arm.right { right: -15px; transform: rotate(-10deg); }
+.z-arm::after { /* Hand */
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 25px;
+    height: 25px;
+    background-color: var(--z-skin-base);
+    border-radius: 50%;
+}
+
+.z-arm.left { left: -20px; transform: rotate(10deg); }
+.z-arm.right { right: -20px; transform: rotate(-10deg); }
 
 /* Muscles (Effect) */
 .zombie.muscular .z-arm {
-    width: 35px; /* Thicker arms */
-    background-color: var(--z-skin-healthy); /* Healthy skin tone usually accompanies muscles */
+    width: 40px;
+    transform: rotate(0deg);
+}
+.zombie.muscular .z-arm::after {
+    width: 40px;
+    background-color: var(--z-skin-healthy);
 }
 
 /* Legs */
@@ -210,28 +272,42 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
+    z-index: 3;
 }
 
 .z-leg {
-    width: 25px;
+    width: 30px;
     height: 60px;
     background-color: var(--z-pants);
-    border-radius: 0 0 10px 10px;
+    border-radius: 0 0 5px 5px;
+    position: relative;
 }
+
+.z-leg::after { /* Shoe */
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: -5px;
+    width: 45px;
+    height: 20px;
+    background-color: #212121;
+    border-radius: 10px 20px 5px 5px;
+}
+.z-leg.left::after { border-radius: 20px 10px 5px 5px; left: -10px; }
+
 
 /* Skin Color Change (Effect) */
 .zombie.healthy-skin .z-head,
-.zombie.healthy-skin .z-arm,
-.zombie.healthy-skin .z-leg { /* Legs are pants, but let's assume skin shows */
+.zombie.healthy-skin .z-arm::after {
     background-color: var(--z-skin-healthy);
 }
 
 .zombie.healthy-skin .z-face {
-    box-shadow: inset 0 0 20px rgba(255, 100, 100, 0.2); /* Rosy cheeks */
+    box-shadow: inset 0 0 20px rgba(255, 100, 100, 0.2);
 }
 
-/* Skeleton Overlay (Initially Hidden) */
+/* Skeleton Overlay */
 .z-skeleton-overlay {
     position: absolute;
     top: 0;
@@ -240,22 +316,24 @@
     height: 100%;
     pointer-events: none;
     opacity: 0;
-    background-image: url("data:image/svg+xml,%3Csvg width='200' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M100 50 L100 250' stroke='white' stroke-width='10' opacity='0.8'/%3E%3C/svg%3E"); /* Simple spine representation */
+    /* Updated SVG for skeleton spine and ribs */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 320' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M110 60 L110 260' stroke='white' stroke-width='12' opacity='0.8' stroke-linecap='round'/%3E%3Cpath d='M80 160 Q110 170 140 160' stroke='white' stroke-width='8' fill='none' opacity='0.8'/%3E%3Cpath d='M85 180 Q110 190 135 180' stroke='white' stroke-width='8' fill='none' opacity='0.8'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: center;
     transition: opacity 0.5s;
     filter: drop-shadow(0 0 5px white);
+    z-index: 10;
 }
 
 .zombie.strong-bones .z-skeleton-overlay {
-    opacity: 0.6;
+    opacity: 0.7;
     animation: boneGlow 2s infinite alternate;
 }
 
 /* Animations */
 @keyframes chew {
     0% { transform: translateX(-50%) scaleY(1); }
-    100% { transform: translateX(-50%) scaleY(0.5); }
+    100% { transform: translateX(-50%) scaleY(0.7); }
 }
 
 @keyframes boneGlow {

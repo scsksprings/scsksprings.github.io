@@ -38,6 +38,9 @@ class Zombie {
             case 'skin':
                 this.element.classList.add('healthy-skin'); // Reusing healthy skin for now, could be distinct
                 break;
+            case 'tummy':
+                this.element.classList.add('slim-tummy');
+                break;
             default:
                 console.log('Unknown effect:', effectType);
         }
@@ -66,7 +69,8 @@ class Zombie {
             'healthy-eyes', 
             'muscular', 
             'strong-bones', 
-            'full-hair'
+            'full-hair',
+            'slim-tummy'
         );
         
         // Add shake animation for feedback

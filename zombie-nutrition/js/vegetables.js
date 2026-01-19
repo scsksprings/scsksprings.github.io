@@ -139,5 +139,98 @@ const vegetables = [
         buffText: '+颜值 UP!',
         color: '#F44336',
         description: '酸甜可口，美容养颜。'
+    },
+    {
+        id: 'cabbage',
+        name: '卷心菜',
+        icon: `<svg viewBox="0 0 100 100" class="veg-svg">
+                <circle cx="50" cy="50" r="40" fill="#C8E6C9" stroke="#388E3C" stroke-width="3"/>
+                <path d="M20 50 Q50 20 80 50" stroke="#4CAF50" stroke-width="2" fill="none"/>
+                <path d="M20 50 Q50 80 80 50" stroke="#4CAF50" stroke-width="2" fill="none"/>
+                <path d="M30 40 Q50 70 70 40" stroke="#4CAF50" stroke-width="2" fill="none"/>
+                <g class="veg-face">
+                    <circle cx="40" cy="45" r="5" fill="white"/>
+                    <circle cx="40" cy="45" r="2" fill="black"/>
+                    <circle cx="60" cy="45" r="5" fill="white"/>
+                    <circle cx="60" cy="45" r="2" fill="black"/>
+                    <path d="M45 60 Q50 65 55 60" stroke="#2E7D32" stroke-width="2" fill="none"/>
+                </g>
+               </svg>`,
+        label: '天然胃菜',
+        nutrition: ['维生素U', '膳食纤维', '钾'],
+        effects: ['养胃护胃', '助消化', '调节血压'],
+        zombieEffect: 'tummy',
+        buffText: '+消化力 UP!',
+        color: '#C8E6C9',
+        description: '富含维生素U，对胃部健康有很大帮助。'
+    },
+    {
+        id: 'cucumber',
+        name: '黄瓜',
+        icon: `<svg viewBox="0 0 100 100" class="veg-svg">
+                <rect x="25" y="15" width="50" height="70" rx="15" fill="#8BC34A" stroke="#33691E" stroke-width="3"/>
+                <circle cx="35" cy="25" r="2" fill="#558B2F"/>
+                <circle cx="65" cy="30" r="2" fill="#558B2F"/>
+                <circle cx="30" cy="70" r="2" fill="#558B2F"/>
+                <circle cx="60" cy="75" r="2" fill="#558B2F"/>
+                <g class="veg-face">
+                    <circle cx="40" cy="45" r="5" fill="white"/>
+                    <circle cx="40" cy="45" r="2" fill="black"/>
+                    <circle cx="60" cy="45" r="5" fill="white"/>
+                    <circle cx="60" cy="45" r="2" fill="black"/>
+                    <path d="M45 60 Q50 55 55 60" stroke="#33691E" stroke-width="2" fill="none"/>
+                </g>
+               </svg>`,
+        label: '补水神器',
+        nutrition: ['水分', '维生素C', '丙醇二酸'],
+        effects: ['清热解毒', '减肥', '美容补水'],
+        zombieEffect: 'skin',
+        buffText: '+水润度 UP!',
+        color: '#8BC34A',
+        description: '含水量高达96%，是夏季补水的最佳选择。'
+    },
+    {
+        id: 'eggplant',
+        name: '茄子',
+        icon: `<svg viewBox="0 0 100 100" class="veg-svg">
+                <path d="M30 30 Q50 10 70 30 Q85 50 75 80 Q50 95 25 80 Q15 50 30 30" fill="#7B1FA2" stroke="#4A148C" stroke-width="3"/>
+                <path d="M25 25 L35 15 L50 10 L65 15 L75 25 L50 35 Z" fill="#4CAF50" stroke="#1B5E20" stroke-width="2"/>
+                <g class="veg-face">
+                    <circle cx="40" cy="45" r="5" fill="white"/>
+                    <circle cx="40" cy="45" r="2" fill="black"/>
+                    <circle cx="60" cy="45" r="5" fill="white"/>
+                    <circle cx="60" cy="45" r="2" fill="black"/>
+                    <path d="M45 60 Q50 65 55 60" stroke="white" stroke-width="2" fill="none"/>
+                </g>
+               </svg>`,
+        label: '紫色奇迹',
+        nutrition: ['花青素', '维生素P', '维生素E'],
+        effects: ['抗衰老', '保护血管', '降低胆固醇'],
+        zombieEffect: 'face-color',
+        buffText: '+气色 UP!',
+        color: '#7B1FA2',
+        description: '皮中的花青素是天然的抗氧化剂。'
+    },
+    {
+        id: 'wintermelon',
+        name: '冬瓜',
+        icon: `<svg viewBox="0 0 100 100" class="veg-svg">
+                <ellipse cx="50" cy="50" rx="35" ry="45" fill="#E0F7FA" stroke="#006064" stroke-width="3"/>
+                <path d="M30 20 Q50 15 70 20" stroke="#80DEEA" stroke-width="2" fill="none"/>
+                <g class="veg-face">
+                    <circle cx="40" cy="45" r="5" fill="white"/>
+                    <circle cx="40" cy="45" r="2" fill="black"/>
+                    <circle cx="60" cy="45" r="5" fill="white"/>
+                    <circle cx="60" cy="45" r="2" fill="black"/>
+                    <path d="M45 60 Q50 65 55 60" stroke="#006064" stroke-width="2" fill="none"/>
+                </g>
+               </svg>`,
+        label: '消肿利器',
+        nutrition: ['丙醇二酸', '钾', '维生素C'],
+        effects: ['利尿消肿', '清热解暑', '减肥降脂'],
+        zombieEffect: 'tummy',
+        buffText: '+轻盈度 UP!',
+        color: '#E0F7FA',
+        description: '不含脂肪，热量极低，减肥人士的理想食材。'
     }
 ];
